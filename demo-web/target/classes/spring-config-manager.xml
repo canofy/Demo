@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire="byName">
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"/>
+
+    <bean id="userManager" class="com.jd.manager.impl.UserManagerImpl" />
+
+
+    <bean id="cacheUtils" class="com.jd.common.cached.CacheUtils">
+        <property name="cacheServerAddress">
+            <list>
+                <value>192.168.153.47:11211</value>
+                <value>192.168.153.47:11212</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="jedis" class="redis.clients.jedis.Jedis" scope="singleton">
+        <constructor-arg index="0" type="java.lang.String">
+            <value>192.168.153.47</value>
+        </constructor-arg>
+        <constructor-arg index="1" type="int">
+            <value>6379</value>
+        </constructor-arg>
+    </bean>
+
+   <!--
+    <bean id="exampleManagerCached" class="com.jd.helloworld.manager.example.impl.ExampleManagerCachedImpl"/>
+      <bean id="exampleService" class="com.jd.helloworld.service.example.impl.ExampleServiceImpl"/>
+
+    <bean id="jedis" class="redis.clients.jedis.Jedis" scope="singleton">
+        <constructor-arg index="0" type="java.lang.String">
+            <value>192.168.153.47</value>
+        </constructor-arg>
+        <constructor-arg index="1" type="int">
+            <value>6379</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="exampleServer" class="com.lizhi.ExampleServer">
+        <property name="jedis">
+            <ref bean="jedis"/>
+        </property>
+    </bean>
+-->
+
+
+</beans>

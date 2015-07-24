@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire="byName" >
+
+
+       <bean id="userService" class="com.jd.service.impl.UserServiceImpl" />
+  <!--  <bean id="jsonUtil" class="com.lizhi.JsonUtil"/>-->
+
+  <!--  &lt;!&ndash; 要调用的工作类 &ndash;&gt;
+    <bean id="quartzJob" class="com.lizhi.QuartzJob"></bean>
+    &lt;!&ndash; 定义调用对象和调用对象的方法 &ndash;&gt;
+    <bean id="jobtask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        &lt;!&ndash; 调用的类 &ndash;&gt;
+        <property name="targetObject">
+            <ref bean="quartzJob"/>
+        </property>
+        &lt;!&ndash; 调用类中的方法 &ndash;&gt;
+        <property name="targetMethod">
+            <value>work</value>
+        </property>
+    </bean>
+    &lt;!&ndash; 定义触发时间 &ndash;&gt;
+    <bean id="doTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="jobtask"/>
+        </property>
+        &lt;!&ndash; cron表达式 &ndash;&gt;
+        <property name="cronExpression">
+            <value>0 26-30 11 * * ?</value>  &lt;!&ndash; &ndash;&gt;
+        </property>
+    </bean>
+    &lt;!&ndash; 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序  &ndash;&gt;
+    <bean id="startQuertz" lazy-init="false" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="doTime"/>
+            </list>
+        </property>
+    </bean>-->
+
+</beans>

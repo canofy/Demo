@@ -1,0 +1,8 @@
+#* @vtlvariable name="user" type="com.jd.domain.User" *#
+#* @vtlvariable name="userId" type="java.lang.Integer" *#
+#* @vtlvariable name="result" type="com.jd.common.web.result.Result" *#
+
+#if($result.success)
+    删除成功:userID==$!userId<br/>
+    <a href="list.action">列表页</a>
+#end

@@ -1,0 +1,10 @@
+#* @vtlvariable name="user" type="com.jd.domain.User" *#
+#* @vtlvariable name="userId" type="java.lang.Integer" *#
+#* @vtlvariable name="result" type="com.jd.common.web.result.Result" *#
+
+#if($result.success)
+    添加成功:userID==$!userId ;name==$!user.name <br/>
+    <a href="list.action">列表页</a>
+#else
+    #parse("/WEB-INF/vm/user/add.vm")
+#end

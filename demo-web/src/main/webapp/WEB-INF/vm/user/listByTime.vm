@@ -1,0 +1,52 @@
+#* @vtlvariable name="example" type="com.jd.domain.User" *#
+#* @vtlvariable name="message" type="java.lang.Integer" *#
+#* @vtlvariable name="sequence" type="java.lang.Integer" *#
+#* @vtlvariable name="users" type="com.jd.common.util.PaginatedList<com.jd.domain.User>" *#
+#* @vtlvariable name="page" type="com.jd.common.util.PaginatedList" *#
+
+#set($title = "查询页面")
+
+message=$message
+showSimpleMessage=#showSimpleMessage()
+
+<br />
+<a href="$!exampleModule.getTarget("/user/add.action")">添加用户</a>
+
+
+<form action="$!exampleModule.getTarget("/user/listByTime.action")" method="get">
+    名称:<input type="text" name="name" size="30" value="$!stringEscapeUtils.escapeHtml($!name)"/>
+    startTime:<input type="text" name="startTime" size="30"  value="$!stringEscapeUtils.escapeHtml($!startTime)"/>
+    endTime:<input type="text" name="endTime" size="30"   value="$!stringEscapeUtils.escapeHtml($!endTime)"/>
+    <input type="submit"/>
+</form>
+
+<table border="1" style="outline:aqua" cellpadding="0" cellspacing="0" width="500">
+    <thead>
+
+    <th>id</th>
+    <th>name</th>
+    <th>type</th>
+    <th>createTime</th>
+    <th>option</th>
+    </thead>
+    <tbody>
+#foreach($user in $users)
+<tr>
+
+     <td>$!user.id</td>
+    <td>$!stringEscapeUtils.escapeHtml($!user.userAccount)</td>
+    <td>$!user.userType</td>
+    <td>$!user.created</td>
+    <td>
+        <a href="$!exampleModule.getTarget("/user/update.action?id=$!user.id")">修改</a>|
+        <a href="$!exampleModule.getTarget("/user/delete.action?id=$!user.id")">删除</a>
+    </td>
+</tr>
+#end
+    </tbody>
+</table>
+
+
+
+#set($pageModule = $exampleModule.getTarget("user/list.action").addQueryData("query",$!query).addQueryData("startTime",$!startTime).addQueryData("endTIme",$!endTIme).addQueryData("endTIme",$!endTIme).addQueryData("pageSize",$!pageSize))
+#showPage($pageModule $users)

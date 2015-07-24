@@ -1,0 +1,11 @@
+#* @vtlvariable name="user" type="com.jd.domain.User" *#
+#showSimpleError()
+<form action="doAdd.action" method="post">
+    userAccount:<input type="text" name="user.userAccount" value="$!stringEscapeUtils.escapeHtml($!user.userAccount)" size="40"> <br/>
+    userType:<select name="user.userType">
+    <option value="1" #if($user.userType == 1) selected="selected" #end>type1</option>
+    <option value="2" #if($user.userType == 2) selected="selected" #end>type2</option>
+    <option value="3" #if($user.userType == 3) selected="selected" #end>type3</option>
+    </select>  <br/>
+    <input type="submit">
+</form>

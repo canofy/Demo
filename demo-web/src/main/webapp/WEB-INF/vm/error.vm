@@ -1,0 +1,16 @@
+#* @vtlvariable name="exception" type="java.lang.Exception" *#
+#* @vtlvariable name="result" type="com.jd.common.web.result.Result" *#
+#if($exception)
+    #if($!exception.class.simpleName=="NoSuchMethodException")
+        404! 页面====$!response.setStatus(404)
+    #else
+        出错信息  $exception.message
+    #end
+#elseif($result)
+    #if($result.resultCode)
+        11=== #showSimpleError()
+    #else
+        没有任何信息
+    #end
+#end
+ 
